@@ -7,7 +7,7 @@ services:
       - $CSServerPort:9300
     restart: "always"
     volumes:
-      - $PWD/inputdata:/csvserver/inputdata
+      - $CSServerMountFile:/csvserver/inputdata
     hostname: $CSServerHostname
     #tty: true 
     environment:
