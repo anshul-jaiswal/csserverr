@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 services:
   csserver:
     container_name: $CSServerServiceName
@@ -9,7 +9,7 @@ services:
     volumes:
       - $CSServerMountFile:/csvserver/inputdata
     hostname: $CSServerHostname
-    #tty: true 
+    tty: true 
     environment:
         PATH: $CSServerPath
         CSVSERVER_BORDER: $CSVSERVER_BORDER
@@ -24,15 +24,15 @@ services:
     volumes:
       - $PromMountFile:/etc/prometheus/prometheus.yml
     hostname: $PromHostname
-    #tty: true 
-    #environment:
-    #    PATH: $CSServerPath
-    #    CSVSERVER_BORDER: $CSVSERVER_BORDER
+    tty: true 
+    environment:
+        PATH: $CSServerPath    
     networks:
       - frontend               
-networks:
+networks:  
   frontend:
     name: frontend-net
+    driver: bridge  
     # Use a custom driver
     #driver: custom-driver-1
   #backend:
