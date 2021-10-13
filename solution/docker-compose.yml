@@ -14,14 +14,29 @@ services:
         PATH: $CSServerPath
         CSVSERVER_BORDER: $CSVSERVER_BORDER
     networks:
-      - frontend           
+      - frontend
+  prometheus:
+    container_name: $PromServiceName
+    image: $PromImage
+    ports:
+      - $PromPort:9090
+    restart: "always"
+    volumes:
+      - $PromMountFile:/etc/prometheus/prometheus.yml
+    hostname: $PromHostname
+    #tty: true 
+    #environment:
+    #    PATH: $CSServerPath
+    #    CSVSERVER_BORDER: $CSVSERVER_BORDER
+    networks:
+      - frontend               
 networks:
   frontend:
     name: frontend-net
     # Use a custom driver
     #driver: custom-driver-1
-  backend:
-    name: backend
+  #backend:
+  #  name: backend
     # Use a custom driver which takes special options
     #driver: custom-driver-2
     #driver_opts:
