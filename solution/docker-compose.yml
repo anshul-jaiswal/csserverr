@@ -11,7 +11,8 @@ services:
     hostname: $CSServerHostname
     #tty: true 
     environment:
-        PATH: $CSServerPath 
+        PATH: $CSServerPath
+        CSVSERVER_BORDER: $CSVSERVER_BORDER
     networks:
       - frontend           
 networks:
