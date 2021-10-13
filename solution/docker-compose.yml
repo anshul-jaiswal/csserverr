@@ -1,17 +1,17 @@
 version: '3'
 services:
   csserver:
-    container_name: csserver-app
-    image: infracloudio/csvserver:latest
+    container_name: $CSServerServiceName
+    image: $CSserverImage
     ports:
-      - "80:9300"
-    #restart: "always"
+      - $CSServerPort:9300
+    restart: "always"
     volumes:
       - $PWD/inputdata:/csvserver/inputdata
-    hostname: csserver
+    hostname: $CSServerHostname
     #tty: true 
     environment:
-        PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin 
+        PATH: $CSServerPath 
     networks:
       - frontend           
 networks:
