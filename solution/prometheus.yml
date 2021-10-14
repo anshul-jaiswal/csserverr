@@ -11,5 +11,5 @@ scrape_configs:
     metrics_path: /metrics
     static_configs:
       - targets:
-        - csserver:80
+        - csserver:9300
         - prometheus:9090
